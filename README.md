@@ -84,7 +84,7 @@ Run `Main.java`
 
 ### Output
 
-![alt text](images\task1.png)
+![alt text](images/task1.png)
 
 ---
 
@@ -115,7 +115,7 @@ Run `Main.java`
 
 ### Output
 
-![alt text](images\task2.png)
+![alt text](images/task2.png)
 
 ---
 
@@ -147,10 +147,10 @@ Run `Main.java`
 
 ### Output
 
-![alt text](images\task3.1.png)
-![alt text](images\task3.2.png)
-![alt text](images\task3.3.png)
-![alt text](images\task3.4.png)
+![alt text](images/task3.1.png)
+![alt text](images/task3.2.png)
+![alt text](images/task3.3.png)
+![alt text](images/task3.4.png)
 
 ---
 
@@ -181,9 +181,8 @@ Run `Main.java`
 
 ### Expected Output
 
-![alt text](images\task4.1.png)
-![alt text](images\task4.2.png)
-
+![alt text](images/task4.1.png)
+![alt text](images/task4.2.png)
 ---
 
 **End of README**
