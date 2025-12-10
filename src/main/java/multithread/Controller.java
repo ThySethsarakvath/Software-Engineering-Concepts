@@ -75,6 +75,7 @@ public class Controller {
 
         // Create and start Prime thread
         primeThread = new PrimeThread(primeLower, primeUpper, primeTextArea, primeProgressBar);
+        primeThread.setDaemon(false);
         primeThread.start();
 
         // Update Prime button states
@@ -147,6 +148,7 @@ public class Controller {
         Long fibUpper = getUpperBound(fibUpperBound);
 
         fibonacciThread = new FibonacciThread(fibLower, fibUpper, fibTextArea, fibProgressBar);
+        fibonacciThread.setDaemon(false);
         fibonacciThread.start();
         fibStartButton.setDisable(true);
         fibPauseButton.setDisable(false);
@@ -205,7 +207,6 @@ public class Controller {
         fibRestartButton.setDisable(true);
         fibProgressBar.setProgress(0);
     }
-
     private long getLowerBound(TextField field, long defaultValue) {
         try {
             String text = field.getText().trim();
@@ -217,7 +218,6 @@ public class Controller {
             return defaultValue;
         }
     }
-
     private Long getUpperBound(TextField field) {
         try {
             String text = field.getText().trim();
@@ -229,7 +229,6 @@ public class Controller {
             return null;
         }
     }
-
     // Prime Number Thread
     class PrimeThread extends Thread {
 
@@ -249,7 +248,6 @@ public class Controller {
             this.progressBar = progress;
             setDaemon(true); // Makes thread stop when app closes
         }
-
         @Override
         public void run() {
             long current = lowerBound;
@@ -258,7 +256,6 @@ public class Controller {
             if (upperBound == null) {
                 Platform.runLater(() -> progressBar.setProgress(-1));
             }
-
             while (!stopped) {
                 // Check if paused
                 synchronized (this) {
@@ -270,16 +267,13 @@ public class Controller {
                         }
                     }
                 }
-
                 if (stopped) {
                     break;
                 }
-
                 // Check upper bound
                 if (upperBound != null && current > upperBound) {
                     break;
                 }
-
                 // Check if current number is prime
                 if (isPrime(current)) {
                     final long primeNumber = current;
@@ -294,9 +288,7 @@ public class Controller {
                         Platform.runLater(() -> progressBar.setProgress(progress));
                     }
                 }
-
                 current++;
-
                 // Small delay to prevent overwhelming the UI
                 try {
                     Thread.sleep(10);
@@ -304,7 +296,6 @@ public class Controller {
                     break;
                 }
             }
-
             // Set progress to complete when done
             if (upperBound != null && !stopped) {
                 Platform.runLater(() -> progressBar.setProgress(1.0));
